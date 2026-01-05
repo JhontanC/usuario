@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     // Instâncias de JwtUtil e UserDetailsService injetadas pelo Spring
-    private final com.javanauta.usuario.infrastructure.security.JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
     private final UserDetailsService userDetailsService;
 
     // Construtor para injeção de dependências de JwtUtil e UserDetailsService
@@ -35,7 +35,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // Cria uma instância do JwtRequestFilter com JwtUtil e UserDetailsService
-        com.javanauta.usuario.infrastructure.security.JwtRequestFilter jwtRequestFilter = new com.javanauta.usuario.infrastructure.security.JwtRequestFilter(jwtUtil, userDetailsService);
+        JwtRequestFilter jwtRequestFilter = new JwtRequestFilter(jwtUtil, userDetailsService);
 
         http
                 .csrf(AbstractHttpConfigurer::disable) // Desativa proteção CSRF para APIs REST (não aplicável a APIs que não mantêm estado)
