@@ -130,5 +130,23 @@ public class UsuarioConverter {
                 .build();
     }
 
+    public Endereco paraEndrecoEntity(EnderecoDTO dto, long idUsario) {
+        return Endereco.builder()
+                .rua(dto.getRua())
+                .numero(dto.getRua())
+                .cep(dto.getCep())
+                .complemento(dto.getComplemento())
+                .cidade(dto.getCidade())
+                .estado(dto.getEstado())
+                .usuario_id(idUsario)
+                .build();
+    }
+    public Telefone paraTelefoneEntity(TelefoneDTO dto, long idUsuario){
+        return Telefone.builder()
+                .usuario_id(idUsuario)
+                .ddd(dto.getDdd())
+                .numero(dto.getNumero())
+                .build();
+    }
 
 }
